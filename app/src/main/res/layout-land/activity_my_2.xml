@@ -54,6 +54,30 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
              />
 
+        <!-- LENGTH INPUT SECTION -->
+        <TextView
+            android:id="@+id/lengthView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/packageLength"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <!-- LENGTH INPUT EDIT TEXT FIELD RECEIVES FOCUS -->
+        <EditText
+            android:id="@+id/editLengthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:textSize="35sp"
+            android:hint="@string/zero">
+
+        <requestFocus />
+
     </LinearLayout>
 
     <!-- TEXTVIEWS FOR BASE COST LABEL AND COMPUTATION  -->
