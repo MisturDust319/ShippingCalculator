@@ -4,7 +4,9 @@
     <string name="app_name">Shipping Calculator</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="packageLength">Length of Package</string>
+    <string name="packageWidth">Width of Package</string>
+    <string name="packageHeight">Height of Package</string>
     <string name="weightLBL">Weight of the package</string>
     <string name="ouncesLBL">(in ounces)</string>
     <string name="baseLBL">Base Cost:</string>
