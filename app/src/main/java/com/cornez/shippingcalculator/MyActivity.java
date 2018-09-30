@@ -2,12 +2,16 @@ package com.cornez.shippingcalculator;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -25,6 +29,10 @@ public class MyActivity extends Activity {
     private TextView lengthET;
     private TextView widthET;
     private TextView heightET;
+    private RadioGroup shippingOptions;
+    private RadioButton shippingStandard;
+    private RadioButton shippingPriority;
+    private RadioButton shippingExpress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,11 @@ public class MyActivity extends Activity {
         lengthET = (EditText) findViewById(R.id.editLengthText);
         widthET = (EditText) findViewById(R.id.editWidthText);
         heightET = (EditText) findViewById(R.id.editHeightText);
+        // radio buttons
+        shippingOptions = (RadioGroup) findViewById(R.id.shippingOptions);
+        shippingStandard = (RadioButton) findViewById(R.id.shippingStandard);
+        shippingPriority = (RadioButton) findViewById(R.id.shippingPriority);
+        shippingExpress = (RadioButton) findViewById(R.id.shippingExpress);
 
         //TASK 3: ESTABLISH THE REFERENCES TO OUTPUT ELEMENTS
         baseCostTV = (TextView) findViewById(R.id.textView4);
@@ -52,6 +65,8 @@ public class MyActivity extends Activity {
         lengthET.addTextChangedListener(lengthTextWatcher);
         widthET.addTextChangedListener(widthTextWatcher);
         heightET.addTextChangedListener(heightTextWatcher);
+        //radio buttons
+        shippingOptions.setOnCheckedChangeListener(RadioListener);
     }
 
     private TextWatcher weightTextWatcher = new TextWatcher() {
@@ -130,6 +145,20 @@ public class MyActivity extends Activity {
                                       int start, int count, int after){}
     };
 
+    private RadioGroup.OnCheckedChangeListener RadioListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            RadioButton button = (RadioButton) radioGroup.findViewById(i);
+            if(null != button
+                    && i > -1 ) {
+                // get the selected text
+                String buttonValue = button.getText().toString();
+                shipItem.setShipping(buttonValue);
+            }
+        }
+    };
+
+
     private void displayShipping() {
         //DISPLAY THE BASE COST, ADDED COST, AND TOTAL COST
         baseCostTV.setText("$" + String.format("%.02f",
@@ -139,8 +168,6 @@ public class MyActivity extends Activity {
         totalCostTV.setText("$" + String.format("%.02f",
                 shipItem.getTotalCost()));
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

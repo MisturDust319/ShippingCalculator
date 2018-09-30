@@ -20,6 +20,7 @@ public class ShipItem {
     private Integer mLength;
     private Integer mWidth;
     private Integer mHeight;
+    private String mShipping;
 
     public ShipItem() {
         mWeight = 0;
@@ -30,6 +31,7 @@ public class ShipItem {
         mLength = 0;
         mWidth = 0;
         mHeight = 0;
+        mShipping = "Standard";
     }
 
     public void setWeight (int weight){
@@ -50,6 +52,11 @@ public class ShipItem {
 
     public void setHeight (int height){
         mHeight = height;
+        computeCosts();
+    }
+
+    public void setShipping (String shipping) {
+        mShipping = shipping;
         computeCosts();
     }
 
