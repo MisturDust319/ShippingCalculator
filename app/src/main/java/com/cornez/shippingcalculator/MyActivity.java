@@ -21,6 +21,10 @@ public class MyActivity extends Activity {
     private TextView baseCostTV;
     private TextView addedCostTV;
     private TextView totalCostTV;
+    // STAN'S ADDITIONS
+    private TextView lengthET;
+    private TextView widthET;
+    private TextView heightET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,10 @@ public class MyActivity extends Activity {
 
         //TASK 3: ESTABLISH THE REFERENCES TO INPUT WEIGHT ELEMENT
         weightET = (EditText) findViewById(R.id.editText1);
+        // STAN'S ADDITIONS
+        lengthET = (EditText) findViewById(R.id.editLengthText);
+        widthET = (EditText) findViewById(R.id.editWidthText);
+        heightET = (EditText) findViewById(R.id.editHeightText);
 
         //TASK 3: ESTABLISH THE REFERENCES TO OUTPUT ELEMENTS
         baseCostTV = (TextView) findViewById(R.id.textView4);
@@ -40,7 +48,10 @@ public class MyActivity extends Activity {
 
         //TASK 4: REGISTER THE LISTENER EVENT FOR WEIGHT INPUT
         weightET.addTextChangedListener(weightTextWatcher);
-
+        // STAN'S ADDITIONS
+        lengthET.addTextChangedListener(lengthTextWatcher);
+        widthET.addTextChangedListener(widthTextWatcher);
+        heightET.addTextChangedListener(heightTextWatcher);
     }
 
     private TextWatcher weightTextWatcher = new TextWatcher() {
@@ -54,6 +65,63 @@ public class MyActivity extends Activity {
                 shipItem.setWeight((int) Double.parseDouble(s.toString()));
             }catch (NumberFormatException e){
                 shipItem.setWeight(0);
+            }
+            displayShipping();
+        }
+        public void afterTextChanged(Editable s) {}
+        public void beforeTextChanged(CharSequence s,
+                                      int start, int count, int after){}
+    };
+
+    private TextWatcher lengthTextWatcher = new TextWatcher() {
+        //THE INPUT ELEMENT IS ATTACHED TO AN EDITABLE,
+        //THEREFORE THESE METHODS ARE CALLED WHEN THE TEXT IS CHANGED
+
+        public void onTextChanged(CharSequence s,
+                                  int start, int before, int count){
+            //CATCH AN EXCEPTION WHEN THE INPUT IS NOT A NUMBER
+            try {
+                shipItem.setLength((int) Double.parseDouble(s.toString()));
+            }catch (NumberFormatException e){
+                shipItem.setLength(0);
+            }
+            displayShipping();
+        }
+        public void afterTextChanged(Editable s) {}
+        public void beforeTextChanged(CharSequence s,
+                                      int start, int count, int after){}
+    };
+
+    private TextWatcher widthTextWatcher = new TextWatcher() {
+        //THE INPUT ELEMENT IS ATTACHED TO AN EDITABLE,
+        //THEREFORE THESE METHODS ARE CALLED WHEN THE TEXT IS CHANGED
+
+        public void onTextChanged(CharSequence s,
+                                  int start, int before, int count){
+            //CATCH AN EXCEPTION WHEN THE INPUT IS NOT A NUMBER
+            try {
+                shipItem.setWidth((int) Double.parseDouble(s.toString()));
+            }catch (NumberFormatException e){
+                shipItem.setWidth(0);
+            }
+            displayShipping();
+        }
+        public void afterTextChanged(Editable s) {}
+        public void beforeTextChanged(CharSequence s,
+                                      int start, int count, int after){}
+    };
+
+    private TextWatcher heightTextWatcher = new TextWatcher() {
+        //THE INPUT ELEMENT IS ATTACHED TO AN EDITABLE,
+        //THEREFORE THESE METHODS ARE CALLED WHEN THE TEXT IS CHANGED
+
+        public void onTextChanged(CharSequence s,
+                                  int start, int before, int count){
+            //CATCH AN EXCEPTION WHEN THE INPUT IS NOT A NUMBER
+            try {
+                shipItem.setHeight((int) Double.parseDouble(s.toString()));
+            }catch (NumberFormatException e){
+                shipItem.setHeight(0);
             }
             displayShipping();
         }

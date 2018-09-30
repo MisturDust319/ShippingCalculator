@@ -16,34 +16,43 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:text="@string/weightLBL"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:gravity="center_horizontal" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <!-- WEIGHT INPUT EDIT TEXT FIELD RECEIVES FOCUS -->
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView1"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
         android:ems="10"
         android:gravity="center_vertical|center_horizontal"
+        android:hint="@string/zero"
         android:inputType="number"
         android:selectAllOnFocus="true"
-        android:textSize="35sp"
-        android:hint="@string/zero">
+        android:textSize="25sp">
 
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editText1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/ouncesLBL"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 
     <!-- LENGTH INPUT SECTION -->
     <TextView
         android:id="@+id/lengthView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:text="@string/packageLength"
@@ -53,25 +62,34 @@
     <EditText
         android:id="@+id/editLengthText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lengthView"
+        android:layout_height="40dp"
+        android:layout_below="@id/lengthView"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:gravity="center_vertical|center_horizontal"
         android:hint="@string/zero"
         android:inputType="number"
         android:selectAllOnFocus="true"
-        android:textSize="35sp">
+        android:textSize="25sp">
 
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:id="@+id/inLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editLengthText"
+        android:layout_centerHorizontal="true"
+        android:text="@string/inchesLBL"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <!-- WIDTH INPUT SECTION -->
     <TextView
         android:id="@+id/widthView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editLengthText"
+        android:layout_below="@id/inLabel1"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:text="@string/packageWidth"
@@ -81,7 +99,7 @@
     <EditText
         android:id="@+id/editWidthText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@id/widthView"
         android:layout_centerHorizontal="true"
         android:ems="10"
@@ -89,20 +107,27 @@
         android:hint="@string/zero"
         android:inputType="number"
         android:selectAllOnFocus="true"
-        android:textSize="35sp">
+        android:textSize="25sp">
 
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:id="@+id/inLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editWidthText"
+        android:layout_centerHorizontal="true"
+        android:text="@string/inchesLBL"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <!-- HEIGHT INPUT SECTION -->
     <TextView
         android:id="@+id/heightView"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/editWidthText"
+        android:layout_below="@+id/inLabel2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="177dp"
         android:gravity="center_horizontal"
         android:text="@string/packageHeight"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -111,29 +136,27 @@
     <EditText
         android:id="@+id/editHeightText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/heightView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-177dp"
         android:ems="10"
         android:gravity="center_vertical|center_horizontal"
         android:hint="@string/zero"
         android:inputType="number"
         android:selectAllOnFocus="true"
-        android:textSize="35sp">
+        android:textSize="25sp">
 
         <requestFocus />
     </EditText>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/inLabel3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editHeightText"
+        android:layout_below="@id/editHeightText"
         android:layout_centerHorizontal="true"
-        android:text="@string/ouncesLBL"
+        android:text="@string/inchesLBL"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
 
     <!-- TEXTVIEWS FOR BASE COST LABEL AND COMPUTATION  -->
     <TextView
@@ -141,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView1"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/inLabel3"
         android:paddingLeft="@dimen/output_margin_buffer"
         android:text="@string/baseLBL"
         android:textAppearance="?android:attr/textAppearanceMedium" />

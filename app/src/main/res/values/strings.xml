@@ -9,6 +9,7 @@
     <string name="packageHeight">Height of Package</string>
     <string name="weightLBL">Weight of the package</string>
     <string name="ouncesLBL">(in ounces)</string>
+    <string name="inchesLBL">(in inches)</string>
     <string name="baseLBL">Base Cost:</string>
     <string name="addCostLBL">Added Cost:</string>
     <string name="totalLBL">Total Shipping Cost:</string>
