@@ -92,9 +92,9 @@ public class ShipItem {
         int largestSide = findLargestSide();
         if( largestSide > 12
                 && largestSide < 24)
-            mBaseCost *= 2;
+            mAddedCost = mBaseCost * 2;
         else if ( largestSide >= 24)
-            mBaseCost *= 3;
+            mAddedCost = mBaseCost * 3;
 
         if (mWeight <= 0)
             mBaseCost = 0.0;

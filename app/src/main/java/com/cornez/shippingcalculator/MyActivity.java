@@ -1,6 +1,7 @@
 package com.cornez.shippingcalculator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -30,9 +31,6 @@ public class MyActivity extends Activity {
     private TextView widthET;
     private TextView heightET;
     private RadioGroup shippingOptions;
-    private RadioButton shippingStandard;
-    private RadioButton shippingPriority;
-    private RadioButton shippingExpress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +48,6 @@ public class MyActivity extends Activity {
         heightET = (EditText) findViewById(R.id.editHeightText);
         // radio buttons
         shippingOptions = (RadioGroup) findViewById(R.id.shippingOptions);
-        shippingStandard = (RadioButton) findViewById(R.id.shippingStandard);
-        shippingPriority = (RadioButton) findViewById(R.id.shippingPriority);
-        shippingExpress = (RadioButton) findViewById(R.id.shippingExpress);
 
         //TASK 3: ESTABLISH THE REFERENCES TO OUTPUT ELEMENTS
         baseCostTV = (TextView) findViewById(R.id.textView4);
@@ -161,12 +156,22 @@ public class MyActivity extends Activity {
 
     private void displayShipping() {
         //DISPLAY THE BASE COST, ADDED COST, AND TOTAL COST
-        baseCostTV.setText("$" + String.format("%.02f",
-                shipItem.getBaseCost()));
-        addedCostTV.setText("$" + String.format("%.02f",
-                shipItem.getAddedCost()));
-        totalCostTV.setText("$" + String.format("%.02f",
-                shipItem.getTotalCost()));
+        try {
+            String temp = "$" + String.format("%.02f", shipItem.getBaseCost());
+            baseCostTV.setText(temp);
+            temp ="$" + String.format("%.02f", shipItem.getAddedCost());
+            addedCostTV.setText(temp);
+            temp = "$" + String.format("%.02f", shipItem.getTotalCost());
+            totalCostTV.setText(temp);
+        }
+        catch (Exception e) {
+            AlertDialog.Builder err = new AlertDialog.Builder(this);
+            err.setMessage(e.toString());
+            err.create();
+            err.show();
+
+        }
+
     }
 
     @Override
