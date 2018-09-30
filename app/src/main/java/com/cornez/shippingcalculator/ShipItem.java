@@ -53,14 +53,47 @@ public class ShipItem {
         computeCosts();
     }
 
+    // STAN'S ADDITIONS
+    // helper function:
+    //  findLargestSide()
+    private int findLargestSide() {
+        int a = mLength;
+        int b = mWidth;
+        int c = mHeight;
+
+        if( b >= a ){
+            if( b >= c)
+                return b;
+            else
+                return c;
+        }
+        else {
+            if( a >= c )
+                return a;
+            else
+                return c;
+        }
+    }
+
     private void computeCosts() {
         mAddedCost = 0.0;
         mBaseCost = BASE;
+
+        // STAN'S ADDITIONS
+        // if the largest side is between 12 and 24 in,
+        //  double the base cost
+        int largestSide = findLargestSide();
+        if( largestSide > 12
+                && largestSide < 24)
+            mBaseCost *= 2;
+        else if ( largestSide >= 24)
+            mBaseCost *= 3;
 
         if (mWeight <= 0)
             mBaseCost = 0.0;
         else if (mWeight > BASE_WEIGHT)
             mAddedCost = Math.ceil((double) (mWeight - BASE_WEIGHT) / EXTRA_OUNCES) * ADDED;
+
 
         mTotalCost = mBaseCost + mAddedCost;
     }
