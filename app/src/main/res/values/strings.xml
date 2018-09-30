@@ -15,5 +15,9 @@
     <string name="totalLBL">Total Shipping Cost:</string>
     <string name="zeroDec">$0.00</string>
     <string name="zero">0</string>
+    <string name="radioStandard">Standard</string>
+    <string name="radioPriority">Priority</string>
+    <string name="radioExpress">Express</string>
+    <string name="shippingOption">Shipping Option</string>
 
 </resources>
