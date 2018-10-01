@@ -149,6 +149,7 @@ public class MyActivity extends Activity {
                 // get the selected text
                 String buttonValue = button.getText().toString();
                 shipItem.setShipping(buttonValue);
+                displayShipping();
             }
         }
     };

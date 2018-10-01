@@ -86,21 +86,31 @@ public class ShipItem {
         mAddedCost = 0.0;
         mBaseCost = BASE;
 
+        if (mWeight <= 0)
+            mBaseCost = 0.0;
+        else if (mWeight > BASE_WEIGHT)
+            mAddedCost = Math.ceil((double) (mWeight - BASE_WEIGHT) / EXTRA_OUNCES) * ADDED;
+
         // STAN'S ADDITIONS
         // if the largest side is between 12 and 24 in,
         //  double the base cost
         int largestSide = findLargestSide();
         if( largestSide > 12
                 && largestSide < 24)
-            mAddedCost = mBaseCost * 2;
+            mBaseCost = mBaseCost * 2;
         else if ( largestSide >= 24)
-            mAddedCost = mBaseCost * 3;
+            mBaseCost = mBaseCost * 3;
 
-        if (mWeight <= 0)
-            mBaseCost = 0.0;
-        else if (mWeight > BASE_WEIGHT)
-            mAddedCost = Math.ceil((double) (mWeight - BASE_WEIGHT) / EXTRA_OUNCES) * ADDED;
-
+        // make adjustments to cost for
+        //  shipping options
+        if( mShipping.equals("Priority")) {
+            mBaseCost *= 2;
+            mAddedCost *= 2;
+        }
+        else if (mShipping.equals("Express")) {
+            mBaseCost *= 3;
+            mAddedCost *= 3;
+        }
 
         mTotalCost = mBaseCost + mAddedCost;
     }
